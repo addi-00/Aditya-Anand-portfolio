@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Anand Portfolio - Dark Mode</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables for Theme Colors */
+    :root {
+      --bg-color: #000;
+      --text-color: #fff;
+      --accent-gradient: linear-gradient(135deg, #00d2ff, #3a7bd5);
+    }
+    
+    /* Global Styles & Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Navigation Bar */
+    nav {
+      background: var(--bg-color);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent-gradient);
+      left: 0;
+      bottom: -5px;
+      transition: width 0.3s;
+    }
+    nav ul li a:hover {
+      color: #00d2ff;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section with Solid Black Background */
+    #hero {
+      background: #111;  /* A deep shade of black */
+      text-align: center;
+      padding: 120px 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    #hero .logo {
+      width: 140px;
+      height: 140px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-color);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    #hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    #hero p {
+      font-size: 22px;
+      margin-bottom: 40px;
+    }
+    #hero .cta-button {
+      padding: 15px 35px;
+      background: var(--accent-gradient);
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: background 0.3s, transform 0.3s;
+      color: var(--text-color);
+    }
+    #hero .cta-button:hover {
+      background: var(--accent-gradient);
+      transform: translateY(-5px);
+    }
+    
+    /* Base Section Styles for Background Images & Overlay */
+    section {
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 0;
+    }
+    section > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* About Section */
+    #about {
+      padding: 80px 20px;
+      background: url('https://picsum.photos/1600/900?random=1') no-repeat center center/cover;
+    }
+    #about .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    #about .about-image {
+      width: 320px;
+      height: 320px;
+      background: #444;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+    #about .about-text {
+      max-width: 700px;
+    }
+    #about .about-text h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #00d2ff;
+    }
+    #about .about-text p {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+    
+    /* Skills Section */
+    #skills {
+      padding: 80px 20px;
+      background: url('https://picsum.photos/1600/900?random=2') no-repeat center center/cover;
+    }
+    #skills h2 {
+      font-size: 48px;
+      margin-bottom: 40px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #00d2ff;
+    }
+    .skills-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 320px;
+    }
+    .skill-item {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+      box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+      transition: transform 0.3s;
+    }
+    .skill-item:hover {
+      transform: translateY(-5px);
+    }
+    .subsection {
+      width: 320px;
+      text-align: left;
+      padding: 20px;
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+    }
+    .subsection h3 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #00d2ff;
+    }
+    .subsection ul {
+      list-style: disc;
+      padding-left: 25px;
+      font-size: 20px;
+    }
+    .subsection ul li {
+      margin-bottom: 8px;
+    }
+    
+    /* Future Projects Section */
+    #projects {
+      padding: 80px 20px;
+      background: url('https://picsum.photos/1600/900?random=3') no-repeat center center/cover;
+    }
+    #projects h2 {
+      font-size: 48px;
+      margin-bottom: 40px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #00d2ff;
+    }
+    .project-placeholder {
+      width: 80%;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #222;
+      padding: 60px;
+      border-radius: 10px;
+      font-size: 22px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 30px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    footer .social-icons {
+      margin-bottom: 15px;
+    }
+    footer .social-icons a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 24px;
+      transition: color 0.3s;
+    }
+    footer .social-icons a:hover {
+      color: #00d2ff;
+    }
+    footer p {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Hero Section with Logo -->
+  <section id="hero">
+    <div class="logo">Logo</div>
+    <h1>Hi, I'm Aditya Anand</h1>
+    <p>From art to technology, building the future one line of code at a time.</p>
+    <button class="cta-button">Learn More</button>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="about-image">
+        <!-- Replace with your portrait or creative illustration -->
+      </div>
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          I'm a 19-year-old creative soul with a passion for art and technology. My journey started in animation and design and is now evolving into a blend of coding, AI, and innovative tech projects.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-content">
+      <!-- General Skills -->
+      <div class="skill-list">
+        <div class="skill-item">Web Development</div>
+        <div class="skill-item">Video Editing</div>
+        <div class="skill-item">Programming</div>
+      </div>
+      <!-- Technology Subsection -->
+      <div class="subsection">
+        <h3>Technology</h3>
+        <ul>
+          <li>C</li>
+          <li>Python</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>and more in future...</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Future Projects Section -->
+  <section id="projects">
+    <h2>Future Projects</h2>
+    <div class="project-placeholder">
+      Stay tuned for my upcoming projects...
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="social-icons">
+      <a href="#">FB</a>
+      <a href="#">TW</a>
+      <a href="#">IG</a>
+    </div>
+    <p>&copy; 2025 Aditya Anand. All Rights Reserved.</p>
+    <p>Contact: email@example.com</p>
+  </footer>
+</body>
+</html>
